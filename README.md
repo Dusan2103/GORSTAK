@@ -1,6 +1,4 @@
 # 🏔️ Gorštak Web Store
-
-![Gorštak Banner](https://via.placeholder.com/1200x400.png?text=Gorštak+Web+Store)  
 *An adventure-inspired clothing e-commerce platform built with HTML, CSS, and JavaScript.*
 
 The **Gorštak Web Store** is a fully functional e-commerce project designed for adventure enthusiasts. It features a seamless shopping experience with dynamic product displays, category filters, a shopping cart system, and a responsive design that works across all devices.
