@@ -36,15 +36,16 @@ The checkout page enables users to enter their details and finalize their purcha
 
 ## Installation and Usage:
 
-1. **Clone the Repository:**
-   ```bash
+**Clone the Repository:**
+   
    git clone https://github.com/Dusan2103/GORSTAK.git
+   
 Navigate to the Project Directory: cd GORSTAK
 
-Open home.html: Launch the home.html file in your preferred web browser to explore the store.
+Launch the home.html file in your preferred web browser to explore the store.
 
 Live Demo:
-Visit the live site: [Gorštak Web Store](https://gorstakstore.netlify.app/)
+[Gorštak Web Store](https://gorstakstore.netlify.app/)
 
 License:
 This project is licensed under the MIT License, permitting free use, modification, and distribution.
