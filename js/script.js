@@ -131,18 +131,25 @@ function initializeCart() {
   } else {
     cartButton.style.display = "flex";
     cartSidebar.style.display = "none"; // Sidebar hidden by default
+    cartSidebar.style.display = "none";
   }
 
   function openCart() {
     cartSidebar.style.display = "block"; // Ensure sidebar is visible
     cartSidebar.classList.add("open");  // Add the 'open' class for styling
     cartButton.style.display = "none";   // Hide the cart button
+    cartSidebar.style.display = "block"; 
+    cartSidebar.classList.add("open"); 
+    cartButton.style.display = "none";  
   }
 
   function closeCart() {
     cartSidebar.classList.remove("open"); // Remove 'open' class
     cartSidebar.style.display = "none";   // Hide sidebar
     cartButton.style.display = cart.length > 0 ? "flex" : "none"; // Show button if cart has items
+    cartSidebar.classList.remove("open");
+    cartSidebar.style.display = "none";   
+    cartButton.style.display = cart.length > 0 ? "flex" : "none"; 
   }
 
   function dynamicCartSection(item) {
@@ -259,6 +266,8 @@ function initializeCart() {
       totalItem.textContent = `Total Items: ${cart.length}`;
       cartButton.style.display = "flex"; // Show cart button if there are items
       // Sidebar state is managed by openCart/closeCart, not here
+      cartButton.style.display = "flex"; 
+    
     }
 
     totalPrice.textContent = totalAmount.toFixed(2);
@@ -292,6 +301,7 @@ function initializeCart() {
 
     updateCart();
     openCart(); // Explicitly open sidebar when adding a product
+    openCart(); 
   });
 
   $(cartButton).on("click", (e) => {
@@ -300,6 +310,7 @@ function initializeCart() {
       closeCart();
     } else {
       openCart(); // Explicitly open sidebar when clicking cart button
+      openCart(); 
     }
   });
 
@@ -331,6 +342,7 @@ function initializeCart() {
   }
 
   updateCart(); // Initial call to set up cart without opening sidebar
+  updateCart(); 
 }
 
 // [Rest of your code remains unchanged]

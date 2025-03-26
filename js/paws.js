@@ -7,6 +7,12 @@
   const bearSeparationSteps = 3; // Separation between bears in steps
   let timelineHeight = $timeline.height(); // Initial height
   let stepHeight = timelineHeight / (totalSteps - 1); // Initial step height
+  const totalSteps = 9;
+  const staggerDelay = 1000; 
+  const fadeDuration = 500; 
+  const bearSeparationSteps = 3; 
+  let timelineHeight = $timeline.height(); 
+  let stepHeight = timelineHeight / (totalSteps - 1); 
   let activePawSets = [];
 
   const createPawPrint = (x, y, type, bearId) => {
@@ -27,6 +33,7 @@
     const staggerY = 60;
     const centerX = $pawPrintsContainer.width() / 2;
     const baseY = stepIndex * stepHeight; // Position for this step
+    const baseY = stepIndex * stepHeight;
 
     // Ensure baseY stays within bounds
     const clampedY = Math.min(Math.max(baseY, 0), timelineHeight);
@@ -46,6 +53,7 @@
       setTimeout(() => {
         $paw.fadeTo(fadeDuration, 1);
       }, index * 100); // 100ms delay between paws in a set
+      }, index * 100);
     });
 
     // Fade out the set after a short delay
@@ -57,6 +65,7 @@
       });
       activePawSets = activePawSets.filter(set => set.paws !== paws);
     }, fadeDuration + 400); // Fade out after 1 second total visibility
+    }, fadeDuration + 400); 
   };
 
   const startPawLoop = () => {
@@ -129,6 +138,8 @@
     timelineHeight = $timeline.height(); // Update height on resize
     stepHeight = timelineHeight / (totalSteps - 1); // Recalculate step height
     // Optionally reposition active paws (if needed)
+    timelineHeight = $timeline.height(); 
+    stepHeight = timelineHeight / (totalSteps - 1); 
     activePawSets.forEach(set => {
       const newBaseY = set.stepIndex * stepHeight;
       const clampedY = Math.min(Math.max(newBaseY, 0), timelineHeight);
