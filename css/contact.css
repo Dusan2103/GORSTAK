@@ -1,0 +1,56 @@
+.fa {
+    padding: 20px;
+    font-size: 220px;
+    width: 260px;
+    height: 260px;
+    text-align: center;
+    text-decoration: none;
+    margin: 40px;
+    border-radius: 10%;
+    display: inline-block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fa:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.fa-facebook { background: #3B5998; color: white; }
+.fa-google { background: #dd4b39; color: white; }
+.fa-instagram { background: #125688; color: white; }
+.fa-rss { background: #ff6600; color: white; }
+
+h2 {
+    color: azure;
+    text-transform: uppercase;
+    font-size: clamp(3rem, 7vw, 10rem);
+    margin-top: -10%;
+    margin-bottom: 5%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+    .fa {
+        width: 480px;
+        height: 480px;
+        font-size: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fa {
+        width: 400px;
+        height: 400px;
+        font-size: 240px;
+    }
+}

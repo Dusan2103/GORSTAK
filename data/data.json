@@ -1,0 +1,164 @@
+{
+  "products": [
+    {
+      "name": "I feel like Angry Bear",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$25",
+      "image": "/public/image/bearTEO.jpg",
+      "type": "T-shirt"
+    },
+    {
+      "name": "Strong Bear Military",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$30",
+      "image": "/public/image/bear4.png",
+      "type": "T-shirt"
+    },
+    {
+      "name": "Black Bear",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$50",
+      "image": "/public/image/bear1.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Serious ONE",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$60",
+      "image": "/public/image/1.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Deadlift Bear",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$55",
+      "image": "/public/image/2.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Biceps strong",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$55",
+      "image": "/public/image/3.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Squad",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$60",
+      "image": "/public/image/4.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Heartless",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$50",
+      "image": "/public/image/5.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "OLD ONE",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$40",
+      "image": "/public/image/6.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Red",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$42",
+      "image": "/public/image/8.jpg",
+      "type": "T-shirt"
+    },
+    {
+      "name": "Cool GUY",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$42",
+      "image": "/public/image/9.jpg",
+      "type": "T-shirt"
+    },
+    {
+      "name": "Blue Bear",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$42",
+      "image": "/public/image/14.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Grizzly",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$42",
+      "image": "/public/image/12.jpg",
+      "type": "T-shirt"
+    },
+    {
+      "name": "Hunting",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$42",
+      "image": "/public/image/13.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Crazzy GUY",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$42",
+      "image": "/public/image/10.jpg",
+      "type": "T-shirt"
+    },
+    {
+      "name": "Powerlifter Bear",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$25",
+      "image": "/public/image/8.jpg",
+      "type": "T-shirt"
+    },
+    {
+      "name": "Marathon Runner",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$50",
+      "image": "/public/image/8.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Crossfit Champion",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$30",
+      "image": "/public/image/8.jpg",
+      "type": "T-shirt"
+    },
+    {
+      "name": "Hiker Bear",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$55",
+      "image": "/public/image/8.jpg",
+      "type": "Hoodie"
+    },
+    {
+      "name": "Camper Bear",
+      "company": "Gorštak",
+      "sizes": ["S", "M", "L", "XL"],
+      "price": "$35",
+      "image": "/public/image/8.jpg",
+      "type": "T-shirt"
+    }
+  ]
+}

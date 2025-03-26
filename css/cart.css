@@ -1,0 +1,312 @@
+.cart-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: #f1c500;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .cart-button:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+  }
+  
+  .cart-button #cart-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+  
+  .cart-button #cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "PT Sans", sans-serif;
+    font-size: 14px;
+  }
+  
+  #cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -25%; /* Početno skriveno */
+    width: 25%;
+    height: 100vh;
+    background: linear-gradient(to bottom, #000000, #041f2a, #06314b);
+    box-shadow: -2px 0 5px rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    color: #f5f5dc;
+    display: flex;
+    flex-direction: column; /* Omogućava vertikalno slaganje elemenata */
+  }
+  
+  #cart-sidebar.open {
+    right: 0; /* Prikazuje korpu kad je otvorena */
+  }
+  
+  .cart-sidebar h2 {
+    font-family: "Lato", sans-serif;
+    font-size: 24px;
+    color: #f1c500;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  
+  #close-cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #f5f5dc;
+    font-size: 20px;
+    font-family: "Lato", sans-serif;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
+  
+  #close-cart:hover {
+    color: #f1c500;
+  }
+  
+  #cart-items {
+    padding-left: 10px;
+    margin-left: -10px;  
+    flex: 1;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    direction: rtl;
+  }
+  
+  #cart-items::-webkit-scrollbar {
+    margin-right: 10px; 
+    width: 8px; /* Uzak scrollbar */
+  }
+  
+  #cart-items::-webkit-scrollbar-thumb {
+    background-color: #f1c500;
+    border-radius: 10px;
+  }
+  
+  #cart-items .box {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    background: linear-gradient(to bottom, #000000, #041f2a, #06314b);
+    border: 1px solid #f5f5dc;
+    min-height: 100px;
+    direction: ltr; /* Resetovanje smera za sadržaj */
+  }
+  
+  #cart-items .box img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+  }
+  
+  #cart-items .box h3 {
+    margin: 0;
+    font-family: "PT Sans", sans-serif;
+    font-size: 16px;
+    color: #f1c500;
+  }
+  
+  #cart-items .box h4 {
+    margin: 5px 0 0 0;
+    font-family: "PT Sans", sans-serif;
+    font-size: 14px;
+    color: #f5f5dc;
+  }
+  
+  #cart-items .box span {
+    font-family: "PT Sans", sans-serif;
+    font-size: 14px;
+    color: #f5f5dc;
+  }
+  
+  #cart-items .box .item-info {
+    flex: 1;
+  }
+  
+  #cart-items .box .quantity-counter {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  #cart-items .box .quantity-counter button {
+    width: 35px;
+    height: 35px;
+    background-color: #f1c500;
+    color: #12122a;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 35px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #cart-items .box .quantity-counter button:hover {
+    background-color: #d4af37;
+  }
+  
+  #cart-items .box .quantity-counter input {
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    font-family: "PT Sans", sans-serif;
+    font-size: 18px;
+    color: #f5f5dc;
+    background-color: #1a1a3a;
+    border: 1px solid #f5f5dc;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  #cart-items .box .quantity-counter input::-webkit-inner-spin-button,
+  #cart-items .box .quantity-counter input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  #cart-items .box .quantity-counter input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  .cart-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+  }
+  
+  .cart-actions p {
+    margin: 10px 0;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    color: #f5f5dc;
+  }
+  
+  .cart-actions button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  
+  #proceed-checkout {
+    background-color: #f1c500;
+    color: #12122a;
+    transition: background-color 0.3s ease;
+  }
+  
+  #proceed-checkout:hover {
+    background-color: #d4af37;
+  }
+  
+  #continue-shopping {
+    background-color: #464646;
+    color: #f5f5dc;
+    transition: background-color 0.3s ease;
+  }
+  
+  #continue-shopping:hover {
+    background-color: #5a5a5a;
+  }
+  
+  #clear-cart {
+    background-color: #ff4444;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  #clear-cart:hover {
+    background-color: #cc0000;
+  }
+  
+  @media (max-width: 575px) {
+    .cart-button {
+      width: 60px;
+      height: 60px;
+    }
+    .cart-button #cart-icon {
+      width: 28px;
+      height: 28px;
+    }
+    .cart-button #cart-count {
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+    }
+    #cart-items .box .quantity-counter button {
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+      margin: 0 8px;
+    }
+    #cart-items .box .quantity-counter input {
+      width: 50px;
+      height: 30px;
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 576px) and (max-width: 991px) {
+    .cart-button {
+      width: 70px;
+      height: 70px;
+    }
+    .cart-button #cart-icon {
+      width: 32px;
+      height: 32px;
+    }
+    .cart-button #cart-count {
+      width: 22px;
+      height: 22px;
+      font-size: 13px;
+    }
+    #cart-items .box .quantity-counter button {
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+    }
+    #cart-items .box .quantity-counter input {
+      width: 55px;
+      height: 32px;
+      font-size: 16px;
+    }
+  }
