@@ -67,7 +67,7 @@ Open the Project: Launch index.html in your preferred web browser to explore the
 Live Demo
 Experience the Gorštak Web Store in action!
 
-👉 Visit the Live Demo
+👉 Visit the Live Demo: https://gorstakstore.netlify.app/
 
 🌱 Future Improvements
 Here are some planned enhancements for the Gorštak Web Store:
