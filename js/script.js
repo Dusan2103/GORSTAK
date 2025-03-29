@@ -80,270 +80,255 @@ $(document).ready(function () {
     });
   }
 
-// IMPLEMENTACIJA KORPE
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Funkcija za inicijalizaciju korpe na svim stranicama
-function initializeCart() {
-  let cartButton = $("#cart-button")[0];
-  if (!cartButton) {
-    cartButton = document.createElement("div");
-    cartButton.id = "cart-button";
-    document.body.appendChild(cartButton);
-  }
-
-  let cartSidebar = $("#cart-sidebar")[0];
-  if (!cartSidebar) {
-    cartSidebar = document.createElement("div");
-    cartSidebar.id = "cart-sidebar";
-    cartSidebar.className = "cart-sidebar";
-    cartSidebar.innerHTML = `
-      <button id="close-cart">X</button>
-      <h2>Checkout</h2>
-      <h3 id="totalItem">Total Items: 0</h3>
-      <div id="cart-items"></div>
-      <div class="cart-actions">
-        <p>Ukupno: <span id="total-price">0</span> $</p>
-        <button id="proceed-checkout">Place Order</button>
-        <button id="continue-shopping">Continue Shopping</button>
-        <button id="clear-cart">Clear Cart</button>
-      </div>
-    `;
-    document.body.appendChild(cartSidebar);
-  }
-
-  const cartItems = $("#cart-items")[0];
-  const totalPrice = $("#total-price")[0];
-  const cartCount = $("#cart-count")[0];
-  const totalItem = $("#totalItem")[0];
-  const proceedCheckout = $("#proceed-checkout")[0];
-  const continueShopping = $("#continue-shopping")[0];
-  const closeCartButton = $("#close-cart")[0];
-  const clearCartButton = $("#clear-cart")[0];
-
-  cartItems.style.overflowY = "auto";
-  cartItems.style.maxHeight = "calc(100% - 150px)";
-
-  // Initial setup: only show cart button if cart has items, sidebar stays hidden
-  if (cart.length === 0) {
-    cartButton.style.display = "none";
-    cartSidebar.style.display = "none";
-  } else {
-    cartButton.style.display = "flex";
-    cartSidebar.style.display = "none"; // Sidebar hidden by default
-    cartSidebar.style.display = "none";
-  }
-
-  function openCart() {
-    cartSidebar.style.display = "block"; // Ensure sidebar is visible
-    cartSidebar.classList.add("open");  // Add the 'open' class for styling
-    cartButton.style.display = "none";   // Hide the cart button
-    cartSidebar.style.display = "block"; 
-    cartSidebar.classList.add("open"); 
-    cartButton.style.display = "none";  
-  }
-
-  function closeCart() {
-    cartSidebar.classList.remove("open"); // Remove 'open' class
-    cartSidebar.style.display = "none";   // Hide sidebar
-    cartButton.style.display = cart.length > 0 ? "flex" : "none"; // Show button if cart has items
-    cartSidebar.classList.remove("open");
-    cartSidebar.style.display = "none";   
-    cartButton.style.display = cart.length > 0 ? "flex" : "none"; 
-  }
-
-  function dynamicCartSection(item) {
-    // [This function remains unchanged]
-    let boxDiv = document.createElement("div");
-    boxDiv.className = "box";
-
-    let checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = true;
-    checkbox.style.marginRight = "15px";
-    $(checkbox).on("change", (e) => {
-      if (!e.target.checked) {
-        const index = cart.findIndex(
-          (cartItem) =>
-            cartItem.name === item.name &&
-            cartItem.selectedSize === item.selectedSize
-        );
-        if (index > -1) {
-          cart.splice(index, 1);
+  function initializeCart() {
+    let cartButton = $("#cart-button")[0];
+    if (!cartButton) {
+      cartButton = document.createElement("div");
+      cartButton.id = "cart-button";
+      document.body.appendChild(cartButton);
+    }
+  
+    let cartSidebar = $("#cart-sidebar")[0];
+    if (!cartSidebar) {
+      cartSidebar = document.createElement("div");
+      cartSidebar.id = "cart-sidebar";
+      cartSidebar.className = "cart-sidebar";
+      cartSidebar.innerHTML = `
+        <button id="close-cart">X</button>
+        <h2>Checkout</h2>
+        <h3 id="totalItem">Total Items: 0</h3>
+        <div id="cart-items"></div>
+        <div class="cart-actions">
+          <p>Ukupno: <span id="total-price">0</span> $</p>
+          <button id="proceed-checkout">Place Order</button>
+          <button id="continue-shopping">Continue Shopping</button>
+          <button id="clear-cart">Clear Cart</button>
+        </div>
+      `;
+      document.body.appendChild(cartSidebar);
+    }
+  
+    const cartItems = $("#cart-items")[0];
+    const totalPrice = $("#total-price")[0];
+    const cartCount = $("#cart-count")[0];
+    const totalItem = $("#totalItem")[0];
+    const proceedCheckout = $("#proceed-checkout")[0];
+    const continueShopping = $("#continue-shopping")[0];
+    const closeCartButton = $("#close-cart")[0];
+    const clearCartButton = $("#clear-cart")[0];
+  
+    cartItems.style.overflowY = "auto";
+    cartItems.style.maxHeight = "calc(100% - 150px)";
+  
+    if (cart.length === 0) {
+      cartButton.style.display = "none";
+      cartSidebar.style.display = "none";
+    } else {
+      cartButton.style.display = "flex";
+      cartSidebar.style.display = "none";
+    }
+  
+    function openCart() {
+      cartSidebar.style.display = "block";
+      cartSidebar.classList.add("open");
+      cartButton.style.display = "none"; // Uvek sakriva dugme kada se korpa otvori
+    }
+  
+    function closeCart() {
+      cartSidebar.classList.remove("open");
+      cartSidebar.style.display = "none";
+      cartButton.style.display = cart.length > 0 ? "flex" : "none"; // Prikazuje dugme samo ako ima stavki
+    }
+  
+    function dynamicCartSection(item) {
+      let boxDiv = document.createElement("div");
+      boxDiv.className = "box";
+  
+      let checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = true;
+      checkbox.style.marginRight = "15px";
+      $(checkbox).on("change", (e) => {
+        if (!e.target.checked) {
+          const index = cart.findIndex(
+            (cartItem) =>
+              cartItem.name === item.name &&
+              cartItem.selectedSize === item.selectedSize
+          );
+          if (index > -1) {
+            cart.splice(index, 1);
+            updateCart();
+          }
+        }
+      });
+      boxDiv.appendChild(checkbox);
+  
+      let boxImg = document.createElement("img");
+      boxImg.src = item.image || '';
+      boxImg.style.width = "80px";
+      boxImg.style.height = "80px";
+      boxImg.style.marginRight = "20px";
+      boxDiv.appendChild(boxImg);
+  
+      let infoDiv = document.createElement("div");
+      infoDiv.className = "item-info";
+      infoDiv.style.flex = "1";
+  
+      let boxh3 = document.createElement("h3");
+      boxh3.textContent = item.name || 'Unnamed Item';
+      boxh3.style.marginBottom = "10px";
+      infoDiv.appendChild(boxh3);
+  
+      let sizeSpan = document.createElement("span");
+      sizeSpan.textContent = `Size: ${item.selectedSize || 'N/A'}`;
+      sizeSpan.style.display = "block";
+      sizeSpan.style.marginBottom = "10px";
+      infoDiv.appendChild(sizeSpan);
+  
+      let quantityDiv = document.createElement("div");
+      quantityDiv.className = "quantity-counter";
+  
+      let minusBtn = document.createElement("button");
+      minusBtn.textContent = "-";
+      $(minusBtn).on("click", () => {
+        if (item.quantity > 1) {
+          item.quantity--;
           updateCart();
         }
-      }
-    });
-    boxDiv.appendChild(checkbox);
-
-    let boxImg = document.createElement("img");
-    boxImg.src = item.image || '';
-    boxImg.style.width = "80px";
-    boxImg.style.height = "80px";
-    boxImg.style.marginRight = "20px";
-    boxDiv.appendChild(boxImg);
-
-    let infoDiv = document.createElement("div");
-    infoDiv.className = "item-info";
-    infoDiv.style.flex = "1";
-
-    let boxh3 = document.createElement("h3");
-    boxh3.textContent = item.name || 'Unnamed Item';
-    boxh3.style.marginBottom = "10px";
-    infoDiv.appendChild(boxh3);
-
-    let sizeSpan = document.createElement("span");
-    sizeSpan.textContent = `Size: ${item.selectedSize || 'N/A'}`;
-    sizeSpan.style.display = "block";
-    sizeSpan.style.marginBottom = "10px";
-    infoDiv.appendChild(sizeSpan);
-
-    let quantityDiv = document.createElement("div");
-    quantityDiv.className = "quantity-counter";
-
-    let minusBtn = document.createElement("button");
-    minusBtn.textContent = "-";
-    $(minusBtn).on("click", () => {
-      if (item.quantity > 1) {
-        item.quantity--;
-        updateCart();
-      }
-    });
-    quantityDiv.appendChild(minusBtn);
-
-    let quantityInput = document.createElement("input");
-    quantityInput.type = "number";
-    quantityInput.value = item.quantity || 1;
-    quantityInput.min = 1;
-    quantityInput.style.width = "60px";
-    $(quantityInput).on("change", (e) => {
-      let newValue = parseInt(e.target.value);
-      if (isNaN(newValue) || newValue < 1) {
-        newValue = 1;
-      }
-      item.quantity = newValue;
-      e.target.value = newValue;
-      updateCart();
-    });
-    quantityDiv.appendChild(quantityInput);
-
-    let plusBtn = document.createElement("button");
-    plusBtn.textContent = "+";
-    $(plusBtn).on("click", () => {
-      item.quantity = (item.quantity || 1) + 1;
-      updateCart();
-    });
-    quantityDiv.appendChild(plusBtn);
-
-    infoDiv.appendChild(quantityDiv);
-    boxDiv.appendChild(infoDiv);
-
-    let boxh4 = document.createElement("h4");
-    boxh4.textContent = `Amount: $${(
-      parseFloat(item.price?.replace("$", "") || 0) * (item.quantity || 1)
-    ).toFixed(2)}`;
-    boxh4.style.marginLeft = "20px";
-    boxDiv.appendChild(boxh4);
-
-    cartItems.appendChild(boxDiv);
-  }
-
-  function updateCart() {
-    cartItems.innerHTML = "";
-    let totalAmount = 0;
-
-    if (cart.length === 0) {
-      cartItems.innerHTML = "<p>Korpa je prazna</p>";
-      totalItem.textContent = "Total Items: 0";
-      cartSidebar.style.display = "none";
-      cartButton.style.display = "none";
-    } else {
-      cart.forEach((item) => {
-        totalAmount +=
-          parseFloat(item.price?.replace("$", "") || 0) * (item.quantity || 1);
-        dynamicCartSection(item);
       });
-      totalItem.textContent = `Total Items: ${cart.length}`;
-      cartButton.style.display = "flex"; // Show cart button if there are items
-      // Sidebar state is managed by openCart/closeCart, not here
-      cartButton.style.display = "flex"; 
-    
+      quantityDiv.appendChild(minusBtn);
+  
+      let quantityInput = document.createElement("input");
+      quantityInput.type = "number";
+      quantityInput.value = item.quantity || 1;
+      quantityInput.min = 1;
+      quantityInput.style.width = "60px";
+      $(quantityInput).on("change", (e) => {
+        let newValue = parseInt(e.target.value);
+        if (isNaN(newValue) || newValue < 1) {
+          newValue = 1;
+        }
+        item.quantity = newValue;
+        e.target.value = newValue;
+        updateCart();
+      });
+      quantityDiv.appendChild(quantityInput);
+  
+      let plusBtn = document.createElement("button");
+      plusBtn.textContent = "+";
+      $(plusBtn).on("click", () => {
+        item.quantity = (item.quantity || 1) + 1;
+        updateCart();
+      });
+      quantityDiv.appendChild(plusBtn);
+  
+      infoDiv.appendChild(quantityDiv);
+      boxDiv.appendChild(infoDiv);
+  
+      let boxh4 = document.createElement("h4");
+      boxh4.textContent = `Amount: $${(
+        parseFloat(item.price?.replace("$", "") || 0) * (item.quantity || 1)
+      ).toFixed(2)}`;
+      boxh4.style.marginLeft = "20px";
+      boxDiv.appendChild(boxh4);
+  
+      cartItems.appendChild(boxDiv);
     }
-
-    totalPrice.textContent = totalAmount.toFixed(2);
-    cartCount.textContent = cart.reduce(
-      (sum, item) => sum + (item.quantity || 1),
-      0
-    );
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-
-  $(document).on("click", ".cart", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const productData = JSON.parse(this.dataset.product || '{}');
-    const sizeSelect = $(this)
-      .closest(".box-down")
-      .prev()
-      .find(".size-select")[0];
-    const selectedSize = sizeSelect ? sizeSelect.value : productData.sizes?.[0];
-
-    const existingItem = cart.find(
-      (item) =>
-        item.name === productData.name && item.selectedSize === selectedSize
-    );
-    if (existingItem) {
-      existingItem.quantity = (existingItem.quantity || 1) + 1;
-    } else {
-      const productWithSize = { ...productData, selectedSize, quantity: 1 };
-      cart.push(productWithSize);
+  
+    function updateCart() {
+      cartItems.innerHTML = "";
+      let totalAmount = 0;
+  
+      if (cart.length === 0) {
+        cartItems.innerHTML = "<p>Korpa je prazna</p>";
+        totalItem.textContent = "Total Items: 0";
+        cartSidebar.style.display = "none";
+        cartButton.style.display = "none";
+      } else {
+        cart.forEach((item) => {
+          totalAmount +=
+            parseFloat(item.price?.replace("$", "") || 0) * (item.quantity || 1);
+          dynamicCartSection(item);
+        });
+        totalItem.textContent = `Total Items: ${cart.length}`;
+        // cartButton.style.display ostaje "none" ako je korpa otvorena
+        if (!cartSidebar.classList.contains("open")) {
+          cartButton.style.display = "flex";
+        }
+      }
+  
+      totalPrice.textContent = totalAmount.toFixed(2);
+      cartCount.textContent = cart.reduce(
+        (sum, item) => sum + (item.quantity || 1),
+        0
+      );
+      localStorage.setItem("cart", JSON.stringify(cart));
     }
-
-    updateCart();
-    openCart(); // Explicitly open sidebar when adding a product
-    openCart(); 
-  });
-
-  $(cartButton).on("click", (e) => {
-    e.stopPropagation();
-    if (cartSidebar.classList.contains("open")) {
-      closeCart();
-    } else {
-      openCart(); // Explicitly open sidebar when clicking cart button
-      openCart(); 
-    }
-  });
-
-  $(closeCartButton).on("click", (e) => {
-    e.stopPropagation();
-    closeCart();
-  });
-
-  $(clearCartButton).on("click", () => {
-    cart = [];
-    localStorage.removeItem("cart");
-    updateCart();
-  });
-
-  if (continueShopping) {
-    $(continueShopping).on("click", (e) => {
+  
+    $(document).on("click", ".cart", function (e) {
+      e.preventDefault();
       e.stopPropagation();
-      closeCart();
+      const productData = JSON.parse(this.dataset.product || '{}');
+      const sizeSelect = $(this)
+        .closest(".box-down")
+        .prev()
+        .find(".size-select")[0];
+      const selectedSize = sizeSelect ? sizeSelect.value : productData.sizes?.[0];
+  
+      const existingItem = cart.find(
+        (item) =>
+          item.name === productData.name && item.selectedSize === selectedSize
+      );
+      if (existingItem) {
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
+      } else {
+        const productWithSize = { ...productData, selectedSize, quantity: 1 };
+        cart.push(productWithSize);
+      }
+  
+      updateCart();
+      openCart(); // Otvara korpu i sakriva dugme
     });
-  }
-
-  if (proceedCheckout) {
-    $(proceedCheckout).on("click", (e) => {
+  
+    $(cartButton).on("click", (e) => {
       e.stopPropagation();
-      if (cart.length > 0) {
-        window.location.href = "error404.html";
+      if (cartSidebar.classList.contains("open")) {
+        closeCart();
+      } else {
+        openCart();
       }
     });
+  
+    $(closeCartButton).on("click", (e) => {
+      e.stopPropagation();
+      closeCart();
+    });
+  
+    $(clearCartButton).on("click", () => {
+      cart = [];
+      localStorage.removeItem("cart");
+      updateCart();
+    });
+  
+    if (continueShopping) {
+      $(continueShopping).on("click", (e) => {
+        e.stopPropagation();
+        closeCart();
+      });
+    }
+  
+    if (proceedCheckout) {
+      $(proceedCheckout).on("click", (e) => {
+        e.stopPropagation();
+        if (cart.length > 0) {
+          window.location.href = "error404.html";
+        }
+      });
+    }
+  
+    updateCart();
   }
 
-  updateCart(); // Initial call to set up cart without opening sidebar
-  updateCart(); 
-}
-
-// [Rest of your code remains unchanged]
 });
