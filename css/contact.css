@@ -1,0 +1,134 @@
+.fa {
+  padding: 20px;
+  font-size: 220px;
+  width: 260px;
+  height: 260px;
+  text-align: center;
+  text-decoration: none;
+  margin: 40px;
+  border-radius: 10%;
+  display: inline-block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fa:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+.fa-rss {
+  background: #ff6600;
+  color: white;
+}
+
+h2 {
+  color: azure;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 6rem);
+  margin-top: -6%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 799px) {
+  .fa {
+    padding: clamp(8px, 1.5vw, 15px);
+    font-size: clamp(60px, 15vw, 120px);
+    width: clamp(80px, 20vw, 160px);
+    height: clamp(80px, 20vw, 160px);
+    margin: clamp(5px, 1vw, 10px);
+  }
+
+  .social-icons {
+    gap: clamp(8px, 1.5vw, 20px);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 6vw, 8rem);
+    margin-top: -10%;
+    margin-bottom: 20%;
+  }
+}
+
+@media (max-width: 1399px) and (min-width: 800px) {
+    .fa {
+      padding: clamp(9px, 1.8vw, 18px);
+      font-size: clamp(70px, 12.5vw, 130px);
+      width: clamp(90px, 17.5vw, 210px);
+      height: clamp(90px, 17.5vw, 210px);
+      margin: clamp(7px, 1.25vw, 12px);
+    }
+  
+    .social-icons {
+      gap: clamp(9px, 1.8vw, 25px);
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+    }
+  
+    h2 {
+      font-size: clamp(2.5rem, 6.5vw, 9rem);
+      margin-top: -11%;
+      margin-bottom: 25%;
+    }
+  }
+
+@media (min-width: 1400px) {
+  .fa {
+    padding: clamp(10px, 2vw, 20px);
+    font-size: 220px;
+    width: 260px;
+    height: 260px;
+    margin: 40px;
+  }
+
+  .social-icons {
+    gap: clamp(7px, 1.5vw, 20px);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  }
+
+  h2 {
+    font-size: clamp(3rem, 7vw, 10rem);
+    margin-top: -10%;
+    margin-bottom: 5%;
+  }
+
+@media (min-width: 2560px) {
+  .fa {
+    padding: clamp(12px, 2.2vw, 24px);
+    font-size: clamp(180px, 20vw, 300px);
+    width: clamp(220px, 25vw, 340px);
+    height: clamp(220px, 25vw, 340px);
+    margin: clamp(20px, 3vw, 50px);
+  }
+
+  .social-icons {
+    gap: clamp(12px, 2.2vw, 35px);
+  }
+}
